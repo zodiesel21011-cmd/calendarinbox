@@ -1,15 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Sidebar } from './components/Sidebar'
 import { InboxView } from './components/InboxView'
 import { CalendarView } from './components/CalendarView'
+import { emailService } from './services/emailService'
 
 function App() {
   const [activeView, setActiveView] = useState('inbox')
+  const [unreadCount, setUnreadCount] = useState(0)
+
+  useEffect(() => {
+    loadUnreadCount()
+  }, [])
+
+  const loadUnreadCount = async () => {
+    const emails = await emailService.getEmails()
+    const count = emails.filter(e => !e.isRead).length
+    setUnreadCount(count)
+  }
 
   const renderView = () => {
     switch (activeView) {
       case 'inbox':
-        return <InboxView />
+        return <InboxView onUnreadChange={loadUnreadCount} />
       case 'calendar':
         return <CalendarView />
       case 'sent':
@@ -71,7 +83,7 @@ function App() {
       <Sidebar 
         activeView={activeView} 
         onViewChange={setActiveView}
-        unreadCount={2}
+        unreadCount={unreadCount}
       />
       <div className="flex-1 overflow-hidden">
         {renderView()}

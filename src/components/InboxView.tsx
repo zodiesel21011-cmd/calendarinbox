@@ -5,7 +5,11 @@ import type { Email, AISuggestion } from '../types'
 import { emailService } from '../services/emailService'
 import { aiService } from '../services/aiService'
 
-export const InboxView: React.FC = () => {
+interface InboxViewProps {
+  onUnreadChange?: () => void
+}
+
+export const InboxView: React.FC<InboxViewProps> = ({ onUnreadChange }) => {
   const [emails, setEmails] = useState<Email[]>([])
   const [selectedEmail, setSelectedEmail] = useState<Email | null>(null)
   const [suggestions, setSuggestions] = useState<AISuggestion[]>([])
@@ -17,10 +21,23 @@ export const InboxView: React.FC = () => {
 
   useEffect(() => {
     if (selectedEmail) {
+      const wasUnread = !selectedEmail.isRead
       emailService.markAsRead(selectedEmail.id)
       analyzeEmail(selectedEmail)
+      
+      // Update unread count in parent
+      if (wasUnread && onUnreadChange) {
+        setTimeout(() => onUnreadChange(), 100)
+      }
+      
+      // Update local state to reflect read status
+      setEmails(prevEmails => 
+        prevEmails.map(email => 
+          email.id === selectedEmail.id ? { ...email, isRead: true } : email
+        )
+      )
     }
-  }, [selectedEmail])
+  }, [selectedEmail, onUnreadChange])
 
   const loadEmails = async () => {
     setLoading(true)
