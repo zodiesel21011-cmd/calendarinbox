@@ -1,0 +1,21 @@
+═══════════════════════════════════════════════════════════════
+                    📝 PUSH COMMAND
+═══════════════════════════════════════════════════════════════
+
+To push to GitHub, run this command:
+
+    git push -u origin main
+
+When prompted:
+  Username: your_github_username
+  Password: your_personal_access_token
+
+Get token: https://github.com/settings/tokens
+
+═══════════════════════════════════════════════════════════════
+
+Repository: https://github.com/zodiesel21011-cmd/calendarinbox
+Branch: main
+Status: Ready to push ✅
+
+═══════════════════════════════════════════════════════════════
