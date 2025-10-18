@@ -1,0 +1,49 @@
+═══════════════════════════════════════════════════════════════
+          🚀 PUSH VERIFIED CODE TO GITHUB - MAIN
+═══════════════════════════════════════════════════════════════
+
+This will REPLACE everything on GitHub with your verified 
+working code.
+
+COMMAND TO RUN:
+───────────────────────────────────────────────────────────────
+
+    git push -u origin main --force
+
+
+WHEN PROMPTED:
+───────────────────────────────────────────────────────────────
+  Username: your_github_username
+  Password: your_personal_access_token
+
+
+GET TOKEN:
+───────────────────────────────────────────────────────────────
+  https://github.com/settings/tokens
+  
+  1. Click "Generate new token (classic)"
+  2. Select scope: "repo" (full control)
+  3. Copy the token
+  4. Use as password when pushing
+
+
+WHAT THIS DOES:
+───────────────────────────────────────────────────────────────
+  ✓ Deletes old files from GitHub repository
+  ✓ Pushes fresh verified working code
+  ✓ Cleans up commit history
+  ✓ Creates clean main branch
+
+
+AFTER PUSHING:
+───────────────────────────────────────────────────────────────
+  1. View: https://github.com/zodiesel21011-cmd/calendarinbox
+  2. Deploy to Vercel: https://vercel.com/new
+  3. Your app will be live!
+
+
+═══════════════════════════════════════════════════════════════
+Status: ✅ Ready to push
+Repository: https://github.com/zodiesel21011-cmd/calendarinbox
+Branch: main
+═══════════════════════════════════════════════════════════════
